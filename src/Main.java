@@ -5,18 +5,18 @@ public class Main {
     public static int seats[][] = new int[4][];
 
     public static void main(String[] args) {
-        seats[0] = new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-        seats[1] = new int[]{0,0,0,0,0,0,0,0,0,0,0,0};
-        seats[2] = new int[]{0,0,0,0,0,0,0,0,0,0,0,0};
-        seats[3] = new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        seats[0] = new int[14];
+        seats[1] = new int[12];
+        seats[2] = new int[12];
+        seats[3] = new int[14];
 
-        buy_seat();
+        //buy_seat();
 
-        for(int[] rows : seats){
-            System.out.println(Arrays.toString(rows));
-        }
+//        for(int[] rows : seats){
+//            System.out.println(Arrays.toString(rows));
+//        }
 
-        //main_menu();
+        main_menu();
 
     }
     public static void main_menu(){
@@ -37,7 +37,6 @@ public class Main {
         do{
             System.out.println("Please select an option : ");
 
-            try {
                 String input = obj.nextLine();
 
                 if (isValidInteger(input)) {
@@ -53,10 +52,8 @@ public class Main {
                     System.out.println("Invalid input. Please enter a number between 1 and 6.");
                     ex = true;
                 }
-            } catch (Exception e) {
-                System.out.println("Wrong input");
-                ex = true;
-            }
+
+
         }
         while (ex);
         System.out.println(option);
