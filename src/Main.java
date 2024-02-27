@@ -11,12 +11,12 @@ public class Main {
         seats[2] = new int[12];
         seats[3] = new int[14];
 
-
+        Main.seats[0][0] = 1;
 
         //seat_number_validate();
         //buy_seat();
-        main_menu();
-
+        //main_menu();
+        find_first_available();
 
     }
     public static void main_menu(){
@@ -62,9 +62,11 @@ public class Main {
                 break;
             case 2:
                 System.out.println(2);
+                cancel_a_seat();
                 break;
             case 4:
                 System.out.println(4);
+                find_first_available();
                 break;
             case 5:
                 System.out.println(5);
@@ -153,5 +155,29 @@ public class Main {
                 System.out.println("the seat was booked");
             }
         }while (true);
+    }
+    public static void cancel_a_seat(){
+        do{
+            seat_number_validate();
+            if(seat_is_available()){
+                System.out.println("Seat was not booked");
+            }else {
+                seats[row][column-1] = 0;
+                break;
+            }
+        }while (true);
+    }
+    public static void find_first_available(){
+        int row_index = 0 , column_index = 0;
+        for (int rows[]:seats){
+            for(int element : rows){
+                if(element == 0){
+                    System.out.println(row_index+" , "+column_index);
+                    break;
+                }
+                column_index++;
+            }
+            row_index++;
+        }
     }
 }
