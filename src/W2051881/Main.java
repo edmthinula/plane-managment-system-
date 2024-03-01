@@ -1,3 +1,4 @@
+package W2051881;
 import java.util.Scanner;
 import java.util.Arrays;
 public class Main {
@@ -14,13 +15,14 @@ public class Main {
         Main.seats[0][0] = 1;
 
         //seat_number_validate();
-        //buy_seat();
+        buy_seat();
         //main_menu();
         //find_first_available();
         //seating_plane();
 
     }
     public static void main_menu(){
+
         Scanner obj = new Scanner(System.in);
         System.out.println("Welcome to the Plane Management application");
         System.out.println("********************************************");
@@ -41,7 +43,6 @@ public class Main {
                 if (isValidInteger(input)) {
                     Main.option = Integer.parseInt(input);
                     if (0 <= option && option <= 6) {
-                        System.out.println("if eke athulata aawa");
                         ex = false;
                     } else {
                         System.out.println("Please enter a number between 1 and 6.");
@@ -51,8 +52,6 @@ public class Main {
                     System.out.println("Invalid input. Please enter a number between 1 and 6.");
                     ex = true;
                 }
-
-
         }
         while (ex);
         //System.out.println(option);
@@ -152,9 +151,13 @@ public class Main {
             seat_number_validate();
             if (seat_is_available()) {
                 Main.seats[row][column - 1] = 1;
-                for (int[] rows : seats) {
-                    System.out.println(Arrays.toString(rows));
-                }
+                Person.storing_person_data();
+                Ticket.Storing_ticket_data(row,column);
+                Person.printing_person_data();
+                Ticket.printing_ticket_data();
+//                for (int[] rows : seats) {
+//                    System.out.println(Arrays.toString(rows));
+//                }
                 break;
             } else {
                 System.out.println("the seat was booked");
@@ -214,5 +217,7 @@ public class Main {
             }System.out.println("");
         }
     }
+    public static void persons(){
 
+    }
 }
