@@ -16,7 +16,8 @@ public class Main {
         //seat_number_validate();
         //buy_seat();
         //main_menu();
-        find_first_available();
+        //find_first_available();
+        //seating_plane();
 
     }
     public static void main_menu(){
@@ -56,6 +57,9 @@ public class Main {
         while (ex);
         //System.out.println(option);
         switch (option){
+            case 0 :
+                System.out.println(0);
+                break;
             case 1:
                 System.out.println(1);
                 buy_seat();
@@ -64,17 +68,18 @@ public class Main {
                 System.out.println(2);
                 cancel_a_seat();
                 break;
-            case 4:
+            case 3:
                 System.out.println(4);
                 find_first_available();
                 break;
-            case 5:
+            case 4:
                 System.out.println(5);
+                seating_plane();
                 break;
-            case 6:
+            case 5:
                 System.out.println(6);
                 break;
-            case 0:
+            case 6:
                 System.out.println(0);
                 break;
         }
@@ -168,16 +173,45 @@ public class Main {
         }while (true);
     }
     public static void find_first_available(){
+        int stop = 1;
         int row_index = 0 , column_index = 0;
         for (int rows[]:seats){
             for(int element : rows){
                 if(element == 0){
-                    System.out.println(row_index+" , "+column_index);
+                    System.out.println(row_number_to_row_letter(row_index)+" , "+(column_index));
+                    stop = 0;
                     break;
                 }
                 column_index++;
             }
+            if(stop ==0){
+                break;
+            }
             row_index++;
+        }
+    }
+    public static String row_number_to_row_letter(int num){
+        switch (num){
+            case 0:
+                return "A";
+            case 1:
+                return "B";
+            case 2:
+                return "C";
+            case 3:
+                return "D";
+        }
+        return null;
+    }
+    public static void seating_plane(){
+        for(int[] i:seats){
+            for(int a:i){
+                if(a==1){
+                    System.out.print("X");
+                }else {
+                    System.out.print(a);
+                }
+            }System.out.println("");
         }
     }
 }
