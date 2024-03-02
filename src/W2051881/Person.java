@@ -41,10 +41,6 @@ public class Person {
         //creating variables to collect user data
         String name,username,email;
 
-        //creating Person class's objects array
-        //Person[][]  person_list = new Person[4][];
-
-
         System.out.print("Enter name ");
         name = obj.nextLine();
         System.out.print("Enter username ");
@@ -52,8 +48,7 @@ public class Person {
         System.out.print("Enter email ");
         email = obj.nextLine();
         Person.person = new Person(name,username,email);
-        //assigning values to Person class's object's varibales
-        //person_list[row][coloumn]= new Person(name,email,username);
+
     }
     public static void printing_person_data(){
         System.out.println("Your name is : "+person.getName());

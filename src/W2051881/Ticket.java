@@ -60,11 +60,7 @@ public class Ticket {
         }
         // assigning object and values into ticket object
         Ticket.ticket =new Ticket(row,coloumn,price,Person.person);
-        // define ragged array each row element count
-//        ticket_array[0] = new Ticket[14];
-//        ticket_array[1] = new Ticket[12];
-//        ticket_array[2] = new Ticket[12];
-//        ticket_array[3] = new Ticket[14];
+
         // assigning ticket object into specific element of the array
         Ticket.ticket_array[row][coloumn-1]=ticket;
 //        for(Ticket[] i : Ticket.ticket_array){
@@ -135,5 +131,24 @@ public class Ticket {
                 }
             }
         }
+    }
+    public static void Search_ticket_and_person_data(int row,int coloumn ){
+        for(Ticket[] i : Ticket.ticket_array){
+            for(Ticket obj : i){
+                if (obj!= null) {
+                 if(obj.getRow()==row && obj.getSeat()==coloumn) {
+                     System.out.println("Seat : " + Main.row_number_to_row_letter(obj.getRow()) + obj.getSeat());
+                     System.out.println("Price for ticket : " + obj.getPrice());
+                     System.out.println("Your name is : " + obj.getPerson().getName());
+                     System.out.println("Your username is : " + obj.getPerson().getUsername());
+                     System.out.println("Your email is : " + obj.getPerson().getEmail());
+                     return;
+                 }
+                }else {
+                    continue;
+                }
+            }
+        }
+
     }
 }

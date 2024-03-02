@@ -17,17 +17,17 @@ public class Main {
         Ticket.ticket_array[2] = new Ticket[12];
         Ticket.ticket_array[3] = new Ticket[14];
 
-        Main.seats[0][0] = 1;
-        Main.seats[1][4]=1;
-        Main.seats[2][8] =1;
-        Main.seats[3][13]=1;
+//        Main.seats[0][0] = 1;
+//        Main.seats[1][4]=1;
+//        Main.seats[2][8] =1;
+//        Main.seats[3][13]=1;
 
         //seat_number_validate();
         //buy_seat();
         //main_menu();
         //find_first_available();
         //seating_plane();
-        printing_total_price();
+        //printing_total_price();
     }
     public static void main_menu(){
 
@@ -81,10 +81,11 @@ public class Main {
                 break;
             case 4:
                 System.out.println(5);
-                seating_plane();
+                show_seating_plane();
                 break;
             case 5:
                 System.out.println(6);
+                print_tickets_info();
                 break;
             case 6:
                 System.out.println(0);
@@ -215,7 +216,7 @@ public class Main {
         }
         return null;
     }
-    public static void seating_plane(){
+    public static void show_seating_plane(){
         for(int[] i:seats){
             for(int a:i){
                 if(a==1){
@@ -226,7 +227,8 @@ public class Main {
             }System.out.println("");
         }
     }
-    public static void printing_total_price(){
+    public static void print_tickets_info(){
+        Ticket.printing_all_ticket_data();
         int price=0;
         for (int rows=0 ; rows<4;rows++){
             for(int coloumns = 0 ; coloumns<seats[rows].length ;coloumns++){
@@ -243,6 +245,16 @@ public class Main {
                 }
             }
         }
-        System.out.println(price);
+        System.out.println("Total price : "+price);
+    }
+    public static void search_tickets(){
+
+        seat_number_validate();
+        if (seat_is_available()) {
+                System.out.println("This seat is available");
+        } else {
+
+        }
+
     }
 }
