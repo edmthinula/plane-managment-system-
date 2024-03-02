@@ -12,14 +12,22 @@ public class Main {
         seats[2] = new int[12];
         seats[3] = new int[14];
 
+        Ticket.ticket_array[0] = new Ticket[14];
+        Ticket.ticket_array[1] = new Ticket[12];
+        Ticket.ticket_array[2] = new Ticket[12];
+        Ticket.ticket_array[3] = new Ticket[14];
+
         Main.seats[0][0] = 1;
+        Main.seats[1][4]=1;
+        Main.seats[2][8] =1;
+        Main.seats[3][13]=1;
 
         //seat_number_validate();
-        buy_seat();
+        //buy_seat();
         //main_menu();
         //find_first_available();
         //seating_plane();
-
+        printing_total_price();
     }
     public static void main_menu(){
 
@@ -171,6 +179,7 @@ public class Main {
                 System.out.println("Seat was not booked");
             }else {
                 seats[row][column-1] = 0;
+                Ticket.delete_ticket_data(row,column);
                 break;
             }
         }while (true);
@@ -217,7 +226,23 @@ public class Main {
             }System.out.println("");
         }
     }
-    public static void persons(){
-
+    public static void printing_total_price(){
+        int price=0;
+        for (int rows=0 ; rows<4;rows++){
+            for(int coloumns = 0 ; coloumns<seats[rows].length ;coloumns++){
+                if (seats[rows][coloumns]==1){
+                    if(coloumns<=4){
+                        price = price +200;
+                    } else if (coloumns<=8) {
+                        price = price + 150;
+                    }else {
+                        price = price + 180;
+                    }
+                }else {
+                    continue;
+                }
+            }
+        }
+        System.out.println(price);
     }
 }
