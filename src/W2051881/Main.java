@@ -1,6 +1,6 @@
 package W2051881;
 import java.util.Scanner;
-import java.util.Arrays;
+
 public class Main {
     public static int option,row,column;
     public static int seats[][] = new int[4][];
@@ -24,13 +24,13 @@ public class Main {
 
         //seat_number_validate();
         //buy_seat();
-        //main_menu();
+        main_menu();
         //find_first_available();
         //seating_plane();
         //printing_total_price();
     }
     public static void main_menu(){
-
+    while (true) {
         Scanner obj = new Scanner(System.in);
         System.out.println("Welcome to the Plane Management application");
         System.out.println("********************************************");
@@ -45,52 +45,56 @@ public class Main {
                 "\n    7) Quit");
         System.out.println("*******************************************");
         boolean ex;
-        do{
+        do {
             System.out.println("Please select an option : ");
-                String input = obj.nextLine();
-                if (isValidInteger(input)) {
-                    Main.option = Integer.parseInt(input);
-                    if (0 <= option && option <= 6) {
-                        ex = false;
-                    } else {
-                        System.out.println("Please enter a number between 1 and 6.");
-                        ex = true;
-                    }
+            String input = obj.nextLine();
+            if (isValidInteger(input)) {
+                Main.option = Integer.parseInt(input);
+                if (0 <= option && option <= 6) {
+                    ex = false;
                 } else {
-                    System.out.println("Invalid input. Please enter a number between 1 and 6.");
+                    System.out.println("Please enter a number between 1 and 6.");
                     ex = true;
                 }
+            } else {
+                System.out.println("Invalid input. Please enter a number between 1 and 6.");
+                ex = true;
+            }
         }
         while (ex);
         //System.out.println(option);
-        switch (option){
-            case 0 :
-                System.out.println(0);
-                break;
+
+        switch (option) {
+            case 0:
+                //System.out.println(0);
+                return;
             case 1:
-                System.out.println(1);
+                //System.out.println(1);
                 buy_seat();
+
                 break;
             case 2:
-                System.out.println(2);
+                //System.out.println(2);
                 cancel_a_seat();
                 break;
             case 3:
-                System.out.println(4);
+                //System.out.println(4);
                 find_first_available();
                 break;
             case 4:
-                System.out.println(5);
+                //System.out.println(5);
                 show_seating_plane();
                 break;
             case 5:
-                System.out.println(6);
+                //System.out.println(6);
                 print_tickets_info();
                 break;
             case 6:
-                System.out.println(0);
+                //System.out.println(0);
+                search_tickets();
                 break;
         }
+    }
     }
     public static boolean isValidInteger(String input){
         try {
@@ -164,6 +168,8 @@ public class Main {
                 Ticket.Storing_ticket_data(row,column);
                 Person.printing_person_data();
                 Ticket.printing_ticket_data();
+                Ticket.file_handling(row,column);
+                Ticket.writing_data_on_file(row,column);
 //                for (int[] rows : seats) {
 //                    System.out.println(Arrays.toString(rows));
 //                }
@@ -186,19 +192,14 @@ public class Main {
         }while (true);
     }
     public static void find_first_available(){
-        int stop = 1;
         int row_index = 0 , column_index = 0;
         for (int rows[]:seats){
             for(int element : rows){
                 if(element == 0){
-                    System.out.println(row_number_to_row_letter(row_index)+" , "+(column_index));
-                    stop = 0;
-                    break;
+                    System.out.println(row_number_to_row_letter(row_index)+" , "+(column_index +1));
+                    return;
                 }
                 column_index++;
-            }
-            if(stop ==0){
-                break;
             }
             row_index++;
         }
@@ -248,13 +249,12 @@ public class Main {
         System.out.println("Total price : "+price);
     }
     public static void search_tickets(){
-
+    System.out.println("Enter below details to search seat : ");
         seat_number_validate();
         if (seat_is_available()) {
                 System.out.println("This seat is available");
         } else {
-
+                Ticket.Search_ticket_and_person_data(row,column);
         }
-
     }
 }

@@ -1,4 +1,5 @@
 package W2051881;
+
 import java.util.Scanner;
 public class Person {
     private String name , username , email;
@@ -56,6 +57,14 @@ public class Person {
         System.out.println("Your email is : "+person.getEmail());
 
     }
+//    public static void writing_person_data(int row,int column) throws IOException {
+//        String name_for_file = Main.row_number_to_row_letter(row) + column + ".txt";
+//        File file = new File(name_for_file);
+//        FileWriter fw = new FileWriter(name_for_file);
+//        fw.write("\nName is : "+person.getName());
+//        fw.write("\nUsername is : "+person.getUsername());
+//        fw.write("\nYour email is : "+person.getEmail());
+//    }
 //    public static void main(String []arg){
 //        storing_person();
 //        printing_person_data();
