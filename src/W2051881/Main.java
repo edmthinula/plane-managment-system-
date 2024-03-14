@@ -33,20 +33,22 @@ public class Main {
     while (true) {
         Scanner obj = new Scanner(System.in);
         System.out.println("Welcome to the Plane Management application");
-        System.out.println("********************************************");
-        System.out.println("              MENU OPTIONS             ");
-        System.out.println("********************************************");
-        System.out.println("    1) Buy a seat" +
-                "\n    2) Cancel a seat" +
-                "\n    3) Find first available seat" +
-                "\n    4) Show seating plane" +
-                "\n    5) Print tickets information and total sales" +
-                "\n    6) search ticket" +
-                "\n    7) Quit");
-        System.out.println("*******************************************");
+        System.out.println("""
+                   *********************************************
+                                    MENU OPTIONS             
+                   *********************************************
+                        1) Buy a seat 
+                        2) Cancel a seat 
+                        3) Find first available seat 
+                        4) Show seating plane 
+                        5) Print tickets information and total sales 
+                        6) search ticket
+                        7) Quit
+                   *********************************************
+                        """);
         boolean ex;
         do {
-            System.out.println("Please select an option : ");
+            System.out.print("Please select an option : ");
             String input = obj.nextLine();
             if (isValidInteger(input)) {
                 Main.option = Integer.parseInt(input);
@@ -66,7 +68,7 @@ public class Main {
 
         switch (option) {
             case 0:
-                //System.out.println(0);
+                System.out.println("Exiting System.");
                 return;
             case 1:
                 //System.out.println(1);
@@ -218,15 +220,24 @@ public class Main {
         return null;
     }
     public static void show_seating_plane(){
-        for(int[] i:seats){
-            for(int a:i){
-                if(a==1){
-                    System.out.print("X");
-                }else {
-                    System.out.print(a);
-                }
-            }System.out.println("");
+        for(int count = 1;count<10;count++) {
+            System.out.print(count+" |");
         }
+        for(int count = 10;count<15;count++) {
+            System.out.print(count+"|");
+        }System.out.println();
+        int row_num = 0;
+        for(int[] i:seats) {
+            System.out.print(row_number_to_row_letter(row_num)+" ");
+            row_num++;
+                for (int a : i) {
+                    if (a == 1) {
+                        System.out.print("X  ");
+                    } else {
+                        System.out.print(a + "  ");
+                    }
+                }System.out.println("");
+        }System.out.println("");
     }
     public static void print_tickets_info(){
         Ticket.printing_all_ticket_data();
