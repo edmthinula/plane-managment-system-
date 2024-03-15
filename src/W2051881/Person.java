@@ -47,9 +47,11 @@ public class Person {
         username = obj.nextLine();
         System.out.print("Enter email ");
         email = obj.nextLine();
+        //storing the data in class objects
         Person.person = new Person(name,username,email);
 
     }
+    
     public static void printing_person_data(){
         System.out.println("Your name is : "+person.getName());
         System.out.println("Your username is : "+person.getUsername());

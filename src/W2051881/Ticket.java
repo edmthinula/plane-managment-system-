@@ -2,7 +2,6 @@ package W2051881;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Ticket {
     //declare  private variables
@@ -69,15 +68,17 @@ public class Ticket {
 
     }
     public static void printing_ticket_data(){
-        System.out.println("Your row is : "+Main.row_number_to_row_letter(Main.row));
+        System.out.println("Your row is : "+ W2051881__PlaneManagement.row_number_to_row_letter(W2051881__PlaneManagement.row));
         System.out.println("Your Seat is : "+ticket.getSeat());
         System.out.println("Your Price is : "+ticket.getPrice());
     }
 
     public static void delete_ticket_data(int row,int coloumn){
+        // deleting the data from the array
         Ticket.ticket_array[row][coloumn-1]=null;
 
     }
+    //printing all the tickets with data
     public static void printing_all_ticket_data(){
         int num = 0 ;
         for(Ticket[] i : Ticket.ticket_array){
@@ -85,7 +86,7 @@ public class Ticket {
                 if (obj!= null) {
                     num++;
                     System.out.println("Ticket : "+num);
-                    System.out.println("Seat : "+Main.row_number_to_row_letter(obj.getRow())+ obj.getSeat());
+                    System.out.println("Seat : "+ W2051881__PlaneManagement.row_number_to_row_letter(obj.getRow())+ obj.getSeat());
                     System.out.println("Price for ticket : "+obj.getPrice());
                     System.out.println("Your name is : "+obj.getPerson().getName());
                     System.out.println("Your username is : "+obj.getPerson().getUsername());
@@ -96,12 +97,13 @@ public class Ticket {
             }
         }
     }
+    //searching data  in the array list and print  it out
     public static void Search_ticket_and_person_data(int row,int coloumn ){
         for(Ticket[] i : Ticket.ticket_array){
             for(Ticket obj : i){
                 if (obj!= null) {
                  if(obj.getRow()==row && obj.getSeat()==coloumn) {
-                     System.out.println("Seat : " + Main.row_number_to_row_letter(obj.getRow()) + obj.getSeat());
+                     System.out.println("Seat : " + W2051881__PlaneManagement.row_number_to_row_letter(obj.getRow()) + obj.getSeat());
                      System.out.println("Price for ticket : " + obj.getPrice());
                      System.out.println("Your name is : " + obj.getPerson().getName());
                      System.out.println("Your username is : " + obj.getPerson().getUsername());
@@ -118,7 +120,7 @@ public class Ticket {
     //creating file , name it as seat name
     public static  void file_handling(int row,int column){
         try{
-            String name_for_file = Main.row_number_to_row_letter(row)+column+".txt";
+            String name_for_file = W2051881__PlaneManagement.row_number_to_row_letter(row)+column+".txt";
             File file = new File(name_for_file);
             boolean chacking = file.exists();
             if(chacking != true){
@@ -136,13 +138,14 @@ public class Ticket {
             e.printStackTrace();
         }
     }
+    //write data to the files
     public static void writing_data_on_file(int row,int column) {
         try {
-            String name_for_file = Main.row_number_to_row_letter(row) + column + ".txt";
+            String name_for_file = W2051881__PlaneManagement.row_number_to_row_letter(row) + column + ".txt";
             File file = new File(name_for_file);
             if (file.exists() && file.canWrite()) {
                 FileWriter fw = new FileWriter(name_for_file);
-                fw.write("\nSeat is : "+Main.row_number_to_row_letter(Main.row)+ticket.getSeat());
+                fw.write("\nSeat is : "+ W2051881__PlaneManagement.row_number_to_row_letter(W2051881__PlaneManagement.row)+ticket.getSeat());
                 fw.write("\nPrice is : "+ticket.getPrice());
                 fw.write("\nName is : "+Person.person.getName());
                 fw.write("\nUsername is : "+Person.person.getUsername());

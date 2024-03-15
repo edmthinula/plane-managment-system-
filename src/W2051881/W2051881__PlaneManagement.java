@@ -1,17 +1,18 @@
 package W2051881;
 import java.util.Scanner;
 
-public class Main {
-// declare public variables
+public class W2051881__PlaneManagement {
+    //Declare variables used throughout the application
     public static int option,row,column;
     public static int seats[][] = new int[4][];
     public static String user_row;
 
     public static void main(String[] args) {
-        seats[0] = new int[14];
-        seats[1] = new int[12];
-        seats[2] = new int[12];
-        seats[3] = new int[14];
+        // Initialize seating arrangement for the plane
+        seats[0] = new int[14]; // Row A with 14 seats
+        seats[1] = new int[12]; // Row B with 12 seats
+        seats[2] = new int[12]; // Row C with 12 seats
+        seats[3] = new int[14]; // Row D with 14 seats
 
         Ticket.ticket_array[0] = new Ticket[14];
         Ticket.ticket_array[1] = new Ticket[12];
@@ -19,13 +20,14 @@ public class Main {
         Ticket.ticket_array[3] = new Ticket[14];
         main_menu();
     }
+
     public static void main_menu(){
     while (true) {
         Scanner obj = new Scanner(System.in);
         System.out.println("Welcome to the Plane Management application");
         System.out.println("""
                    *********************************************
-                                    MENU OPTIONS            
+                                    MENU OPTIONS           
                    *********************************************
                         1) Buy a seat 
                         2) Cancel a seat 
@@ -41,7 +43,7 @@ public class Main {
             System.out.print("Please select an option : ");
             String input = obj.nextLine();
             if (isValidInteger(input)) {
-                Main.option = Integer.parseInt(input);
+                W2051881__PlaneManagement.option = Integer.parseInt(input);
                 if (0 <= option && option <= 6) {
                     ex = false;
                 } else {
@@ -79,7 +81,7 @@ public class Main {
             }
         }
     }
-    //checking input is integer or not
+    // Function to validate user input as an integer
     public static boolean isValidInteger(String input){
         try {
             //try to convert user input to integer
@@ -90,23 +92,23 @@ public class Main {
         }
     }
 
-    //checking user input is valid
+    // Function to validate user input for seat row (A, B, C, or D)
     public static void seat_number_validate(){
         Scanner obj = new Scanner(System.in);
         do {
             System.out.print("Enter a row : ");
-            Main.user_row = obj.nextLine();
-            if (user_row.equalsIgnoreCase("a")) {
-                Main.row = 0;
+            W2051881__PlaneManagement.user_row = obj.nextLine(); // Convert input to uppercase for case-insensitive comparison
+                if (user_row.equalsIgnoreCase("a")) {
+                W2051881__PlaneManagement.row = 0;
                 break;
             } else if (user_row.equalsIgnoreCase("b")) {
-                Main.row = 1;
+                W2051881__PlaneManagement.row = 1;
                 break;
             } else if (user_row.equalsIgnoreCase("c")) {
-                Main.row = 2;
+                W2051881__PlaneManagement.row = 2;
                 break;
             } else if (user_row.equalsIgnoreCase("d")) {
-                Main.row = 3;
+                W2051881__PlaneManagement.row = 3;
                 break;
             } else {
                 System.out.println("Wrong input");
@@ -115,8 +117,9 @@ public class Main {
         do {
             System.out.print("Enter column number : ");
             String input_column = obj.nextLine();
+            // Validate user input as an integer
             if (isValidInteger(input_column)) {
-                Main.column = Integer.parseInt(input_column);
+                W2051881__PlaneManagement.column = Integer.parseInt(input_column);
                 if (row == 1 || row == 2) {
                     if (column - 1 >= 0 && column - 1 <= 11) {
                         break;
@@ -143,11 +146,12 @@ public class Main {
             return false;
         }
     }
+
     //buying seat method
     public static void buy_seat(){
         seat_number_validate();
         if (seat_is_available()) {
-            Main.seats[row][column - 1] = 1;  //changing value in seat array
+            W2051881__PlaneManagement.seats[row][column - 1] = 1;  //changing value in seat array
             Person.storing_person_data();
             Ticket.Storing_ticket_data(row,column);
             Person.printing_person_data();
