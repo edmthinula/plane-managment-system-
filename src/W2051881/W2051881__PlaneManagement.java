@@ -47,18 +47,18 @@ public class W2051881__PlaneManagement {
                 if (0 <= option && option <= 6) {
                     ex = false;
                 } else {
-                    System.out.println("Please enter a number between 1 and 6.");
+                    System.out.println("Please enter a number between 0 and 6.");
                     ex = true;
                 }
             } else {
-                System.out.println("Invalid input. Please enter a number between 1 and 6.");
+                System.out.println("Invalid input. Please enter a number between 0 and 6.");
                 ex = true;
             }
         }
         while (ex);
             switch (option) {
                 case 0:
-                    System.out.println("Exiting System.");
+                    System.out.println("Exiting ...");
                     return;
                 case 1:
                     buy_seat();
@@ -205,6 +205,8 @@ public class W2051881__PlaneManagement {
     }
     //printing seats plan
     public static void show_seating_plane(){
+        System.out.println(" ");
+        System.out.print("  ");
         for(int count = 1;count<10;count++) {
             System.out.print(count+" |");
         }

@@ -41,8 +41,11 @@ public class Person {
         Scanner obj = new Scanner(System.in);
         //creating variables to collect user data
         String name,username,email;
-        System.out.print("Enter name ");
-        name = obj.nextLine();
+        do {
+            System.out.print("Enter name ");
+            name = obj.nextLine();
+        }while (name_validation(name));
+
         System.out.print("Enter username ");
         username = obj.nextLine();
         System.out.print("Enter email ");
@@ -58,5 +61,17 @@ public class Person {
         System.out.println("Your email is : "+person.getEmail());
 
     }
+    public static boolean name_validation(String name){
+        for (char c : name.toCharArray()){
+            if (!Character.isLetter(c)){
+                return false;
+            }
+        }return true;
+    }
+    public static void main(String arg[]){
+        String name = "woefhefewu";
+        System.out.println(name_validation(name));
 
+
+    }
 }
