@@ -123,7 +123,7 @@ public class Ticket {
             String name_for_file = W2051881__PlaneManagement.row_number_to_row_letter(row)+column+".txt";
             File file = new File(name_for_file);
             boolean chacking = file.exists();
-            if(chacking != true){
+            if(!chacking){
                 boolean file_created = file.createNewFile();
                 if(file_created){
                     System.out.println("file was created "+file.getName());
